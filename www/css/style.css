@@ -1,0 +1,12 @@
+/* Empty. Add your own CSS if you like */
+.button.active{
+  background-color: #f5f5f5 !important;
+}
+
+.item-complex .item-content,
+.item-radio .item-content {
+  position: relative;
+  z-index: 2;
+  padding: 0px 0px 0px 0px;
+  border: none;
+  background-color: #fff; }

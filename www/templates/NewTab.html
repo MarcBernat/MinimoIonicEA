@@ -1,0 +1,65 @@
+<ion-view view-title="Add">
+  <ion-content>
+    <div class="button-bar bar-light">
+      <a class="button" style="border-radius:0" ng-click="activeButton='a'" ng-class="{'active':activeButton==='a'}">Student</a>
+      <a class="button" style="border-radius:0" ng-click="activeButton='b'" ng-class="{'active':activeButton==='b'}">Subject</a>
+    </div>
+
+    <!--Student-->
+
+    <div class="list" ng-show="activeButton==='a'">
+      <div class="item item-divider">
+        Personal Details
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Bart Simpson" ng-model="NewStudent.name" required>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Address</span>
+        <input type="text" placeholder="123 Fake Street" ng-model="NewStudent.address" required>
+      </label>
+      <div class="item item-divider">
+      Contacts
+      </div>
+      <div class="list">
+        <div class="item item-icon-left">
+          <i class="icon ion-home"></i>
+          <span class="input-label">Home</span>
+          <input type="text" placeholder="+0034 93123456" ng-model="NewStudent.contacts.home" required>
+        </div>
+        <div class="item item-icon-left">
+          <i class="icon ion-briefcase"></i>
+          <span class="input-label">Work</span>
+          <input type="text" placeholder="+0034 93987654" ng-model="NewStudent.contacts.work" required>
+        </div>
+      </div>
+      <button class="button button-full button-positive" ng-click="CreateStudent()"
+              ng-disabled="!NewStudent.name || !NewStudent.address">
+        Add Student
+      </button>
+    </div>
+
+    <!--Subject-->
+
+    <div class="list" ng-show="activeButton==='b'">
+      <div class="item item-divider">
+        Subject Details
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Enginyeria d'Aplicacions" ng-model="NewSubject.name" required>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Quarter</span>
+        <input type="text" placeholder="Autumn 2016" ng-model="NewSubject.when" required>
+      </label>
+
+      <button class="button button-full button-positive" ng-click="CreateSubject()"
+              ng-disabled="!NewSubject.name || !NewSubject.when">
+        Add Subject
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

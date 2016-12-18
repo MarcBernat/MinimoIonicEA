@@ -1,0 +1,19 @@
+<ion-view view-title="SubjectDetail">
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Students
+      </div>
+      <ion-item ng-repeat="stu in students">
+        <a class="item item-icon-left item-button-right">
+          <i class="icon ion-person"></i>
+          <h2>{{stu.name}}</h2>
+          <button class="button button-assertive" ng-click="AddStudentinSubject(stu)">Delete</button>
+        </a>
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-assertive" ng-click="DeleteSubject()">
+      Delete Subject
+    </button>
+  </ion-content>
+</ion-view>
