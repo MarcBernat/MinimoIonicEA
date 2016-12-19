@@ -37,13 +37,6 @@ var app = angular.module('MinimoIonic', ['ionic'])
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-  .state('subjectsdetail', {
-    url: '/subjectsdetail/:id',
-    abstract: true,
-    templateUrl: 'templates/SubjectsdetailTab.html',
-    controller: 'SubjectsdtlCtrl'
-  })
-
   // Each tab has its own nav history stack:
 
   .state('tab.subjects', {
@@ -56,6 +49,16 @@ var app = angular.module('MinimoIonic', ['ionic'])
       }
     }
   })
+    .state('tab.subjects-detail', {
+      url: '/subjectsdetail/:id',
+      cache: false,
+      views: {
+        "tab-subjects": {
+          templateUrl: 'templates/SubjectsdetailTab.html',
+          controller: 'SubjectsdtlCtrl'
+        }
+      }
+    })
   .state('tab.students', {
       url: '/students',
       cache: false,

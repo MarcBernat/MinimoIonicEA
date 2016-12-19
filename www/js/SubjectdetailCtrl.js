@@ -4,6 +4,7 @@
 app.controller('SubjectsdtlCtrl', function($scope, $http) {
 
   var id = window.location.href.split("/").pop();
+  console.log(id);
   //Obtenemos a los estudiantes
   $http.get(base_url + '/students')
     .success(function(data) {
