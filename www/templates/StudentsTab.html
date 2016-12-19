@@ -1,7 +1,12 @@
 <ion-view view-title="Students">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="stu in students">
+      <div class="button-bar bar-light">
+        <a class="button" style="border-radius:0" ng-click="activeButton='a'; showPopupSearch();" ng-class="{'active':activeButton==='a'}">Search</a>
+        <a class="button" style="border-radius:0" ng-click="activeButton='b'; OrderStudents('alpha');" ng-class="{'active':activeButton==='b'}">Sort by ABC</a>
+        <!--<a class="button" style="border-radius:0" ng-click="activeButton='c'; orderQuery.order = '-students.length'; Clean();" ng-class="{'active':activeButton==='c'}">Sort by Num</a>-->
+      </div>
+      <ion-item ng-repeat="stu in students | orderBy : orderQuery.order">
         <a class="item item-icon-left item-button-right">
           <i class="icon ion-person"></i>
           <h2>{{stu.name }}</h2>
