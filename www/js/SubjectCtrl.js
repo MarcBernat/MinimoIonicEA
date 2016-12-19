@@ -4,7 +4,7 @@
 app.controller('SubjectsCtrl', function($scope, $http, $ionicPopup) {
 
   $scope.NewSearch = {
-    name: '',
+    text: '',
     newfilter: ''
   };
 
@@ -21,6 +21,7 @@ app.controller('SubjectsCtrl', function($scope, $http, $ionicPopup) {
     .error(function(data) {
       console.log('Error: ' + data);
     });
+
 
   $scope.showPopupSearch = function() {
 
@@ -50,7 +51,7 @@ app.controller('SubjectsCtrl', function($scope, $http, $ionicPopup) {
           text: '<b>Do</b>',
           type: 'button-positive',
           onTap: function() {
-            $scope.SearchSubjects();
+              $scope.SearchSubjects();
           }
         }
       ]
@@ -63,19 +64,18 @@ app.controller('SubjectsCtrl', function($scope, $http, $ionicPopup) {
 
 
   $scope.SearchSubjects = function(){
-    RemoveOrderLength();
-    console.log($scope.NewSearch);
-    $http.get(base_url+'/subjects/find/' + $scope.NewSearch.newfilter +'/' +  $scope.NewSearch.text)
-      .success(function(data){
-        $scope.subjects = {};
-        $scope.subjects = data;
-        console.log(data);
-        $scope.NewSearch.newfilter = null;
-      })
-      .error(function(data){
-        console.log('Error:' + data);
-      });
-
+      RemoveOrderLength();
+      console.log($scope.NewSearch);
+      $http.get(base_url+'/subjects/find/' + $scope.NewSearch.newfilter +'/' +  $scope.NewSearch.text)
+        .success(function(data){
+          $scope.subjects = {};
+          $scope.subjects = data;
+          console.log(data);
+          $scope.NewSearch.newfilter = null;
+        })
+        .error(function(data){
+          console.log('Error:' + data);
+        });
   };
 
   $scope.OrderSubjects = function(filter){
@@ -96,5 +96,18 @@ app.controller('SubjectsCtrl', function($scope, $http, $ionicPopup) {
     $scope.orderQuery = {
       order: '',
     };
+  };
+
+  $scope.Clean = function(){
+    $http.get(base_url+ '/subjects')
+      .success(function(data) {
+        $scope.subjects = {};
+        $scope.subjects = data;
+        console.log(data);
+
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
   };
 });

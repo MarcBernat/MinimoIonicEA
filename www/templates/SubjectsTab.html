@@ -3,7 +3,7 @@
     <div class="button-bar bar-light">
       <a class="button" style="border-radius:0" ng-click="activeButton='a'; showPopupSearch();" ng-class="{'active':activeButton==='a'}">Search</a>
       <a class="button" style="border-radius:0" ng-click="activeButton='b'; OrderSubjects('alpha');" ng-class="{'active':activeButton==='b'}">Sort by ABC</a>
-      <a class="button" style="border-radius:0" ng-click="activeButton='c'; orderQuery.order = '-students.length';" ng-class="{'active':activeButton==='c'}">Sort by Num</a>
+      <a class="button" style="border-radius:0" ng-click="activeButton='c'; orderQuery.order = '-students.length'; Clean();" ng-class="{'active':activeButton==='c'}">Sort by Num</a>
     </div>
     <ion-list>
       <ion-item ng-repeat="sub in subjects | orderBy : orderQuery.order">
